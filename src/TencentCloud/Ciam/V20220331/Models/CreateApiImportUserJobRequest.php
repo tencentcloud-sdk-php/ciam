@@ -18,22 +18,14 @@ namespace TencentCloud\Ciam\V20220331\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * ListUserByProperty请求参数结构体
+ * CreateApiImportUserJob请求参数结构体
  *
  * @method string getUserStoreId() 获取用户目录ID
  * @method void setUserStoreId(string $UserStoreId) 设置用户目录ID
- * @method string getPropertyCode() 获取查询的属性
-
-<li> **phoneNumber** </li>	  手机号码
-<li> **email** </li>  邮箱
- * @method void setPropertyCode(string $PropertyCode) 设置查询的属性
-
-<li> **phoneNumber** </li>	  手机号码
-<li> **email** </li>  邮箱
- * @method string getPropertyValue() 获取属性值
- * @method void setPropertyValue(string $PropertyValue) 设置属性值
+ * @method array getDataFlowUserCreateList() 获取导入的用户数据
+ * @method void setDataFlowUserCreateList(array $DataFlowUserCreateList) 设置导入的用户数据
  */
-class ListUserByPropertyRequest extends AbstractModel
+class CreateApiImportUserJobRequest extends AbstractModel
 {
     /**
      * @var string 用户目录ID
@@ -41,25 +33,13 @@ class ListUserByPropertyRequest extends AbstractModel
     public $UserStoreId;
 
     /**
-     * @var string 查询的属性
-
-<li> **phoneNumber** </li>	  手机号码
-<li> **email** </li>  邮箱
+     * @var array 导入的用户数据
      */
-    public $PropertyCode;
-
-    /**
-     * @var string 属性值
-     */
-    public $PropertyValue;
+    public $DataFlowUserCreateList;
 
     /**
      * @param string $UserStoreId 用户目录ID
-     * @param string $PropertyCode 查询的属性
-
-<li> **phoneNumber** </li>	  手机号码
-<li> **email** </li>  邮箱
-     * @param string $PropertyValue 属性值
+     * @param array $DataFlowUserCreateList 导入的用户数据
      */
     function __construct()
     {
@@ -78,12 +58,13 @@ class ListUserByPropertyRequest extends AbstractModel
             $this->UserStoreId = $param["UserStoreId"];
         }
 
-        if (array_key_exists("PropertyCode",$param) and $param["PropertyCode"] !== null) {
-            $this->PropertyCode = $param["PropertyCode"];
-        }
-
-        if (array_key_exists("PropertyValue",$param) and $param["PropertyValue"] !== null) {
-            $this->PropertyValue = $param["PropertyValue"];
+        if (array_key_exists("DataFlowUserCreateList",$param) and $param["DataFlowUserCreateList"] !== null) {
+            $this->DataFlowUserCreateList = [];
+            foreach ($param["DataFlowUserCreateList"] as $key => $value){
+                $obj = new ImportUser();
+                $obj->deserialize($value);
+                array_push($this->DataFlowUserCreateList, $obj);
+            }
         }
     }
 }

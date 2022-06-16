@@ -18,22 +18,14 @@ namespace TencentCloud\Ciam\V20220331\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * ListUserByProperty请求参数结构体
+ * ListJobs请求参数结构体
  *
  * @method string getUserStoreId() 获取用户目录ID
  * @method void setUserStoreId(string $UserStoreId) 设置用户目录ID
- * @method string getPropertyCode() 获取查询的属性
-
-<li> **phoneNumber** </li>	  手机号码
-<li> **email** </li>  邮箱
- * @method void setPropertyCode(string $PropertyCode) 设置查询的属性
-
-<li> **phoneNumber** </li>	  手机号码
-<li> **email** </li>  邮箱
- * @method string getPropertyValue() 获取属性值
- * @method void setPropertyValue(string $PropertyValue) 设置属性值
+ * @method array getJobIds() 获取任务ID列表，为空时返回全部任务
+ * @method void setJobIds(array $JobIds) 设置任务ID列表，为空时返回全部任务
  */
-class ListUserByPropertyRequest extends AbstractModel
+class ListJobsRequest extends AbstractModel
 {
     /**
      * @var string 用户目录ID
@@ -41,25 +33,13 @@ class ListUserByPropertyRequest extends AbstractModel
     public $UserStoreId;
 
     /**
-     * @var string 查询的属性
-
-<li> **phoneNumber** </li>	  手机号码
-<li> **email** </li>  邮箱
+     * @var array 任务ID列表，为空时返回全部任务
      */
-    public $PropertyCode;
-
-    /**
-     * @var string 属性值
-     */
-    public $PropertyValue;
+    public $JobIds;
 
     /**
      * @param string $UserStoreId 用户目录ID
-     * @param string $PropertyCode 查询的属性
-
-<li> **phoneNumber** </li>	  手机号码
-<li> **email** </li>  邮箱
-     * @param string $PropertyValue 属性值
+     * @param array $JobIds 任务ID列表，为空时返回全部任务
      */
     function __construct()
     {
@@ -78,12 +58,8 @@ class ListUserByPropertyRequest extends AbstractModel
             $this->UserStoreId = $param["UserStoreId"];
         }
 
-        if (array_key_exists("PropertyCode",$param) and $param["PropertyCode"] !== null) {
-            $this->PropertyCode = $param["PropertyCode"];
-        }
-
-        if (array_key_exists("PropertyValue",$param) and $param["PropertyValue"] !== null) {
-            $this->PropertyValue = $param["PropertyValue"];
+        if (array_key_exists("JobIds",$param) and $param["JobIds"] !== null) {
+            $this->JobIds = $param["JobIds"];
         }
     }
 }
