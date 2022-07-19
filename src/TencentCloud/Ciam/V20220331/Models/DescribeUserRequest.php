@@ -18,24 +18,18 @@ namespace TencentCloud\Ciam\V20220331\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * ListUser请求参数结构体
+ * DescribeUser请求参数结构体
  *
  * @method string getUserStoreId() 获取用户目录ID
  * @method void setUserStoreId(string $UserStoreId) 设置用户目录ID
  * @method Pageable getPageable() 获取分页数据
  * @method void setPageable(Pageable $Pageable) 设置分页数据
- * @method array getFilters() 获取Key可选值为condition、userGroupId
-
-<li> **condition** </li>	Values = 查询条件，用户ID，用户名称，手机或邮箱
-<li> **userGroupId** </li>	Values = 用户组ID
- * @method void setFilters(array $Filters) 设置Key可选值为condition、userGroupId
-
-<li> **condition** </li>	Values = 查询条件，用户ID，用户名称，手机或邮箱
-<li> **userGroupId** </li>	Values = 用户组ID
- * @method boolean getOriginal() 获取返回信息是否为原文
- * @method void setOriginal(boolean $Original) 设置返回信息是否为原文
+ * @method array getFilters() 获取查询条件，根据propertycode和propertykey
+ * @method void setFilters(array $Filters) 设置查询条件，根据propertycode和propertykey
+ * @method boolean getOriginal() 获取是否返回明文
+ * @method void setOriginal(boolean $Original) 设置是否返回明文
  */
-class ListUserRequest extends AbstractModel
+class DescribeUserRequest extends AbstractModel
 {
     /**
      * @var string 用户目录ID
@@ -48,26 +42,20 @@ class ListUserRequest extends AbstractModel
     public $Pageable;
 
     /**
-     * @var array Key可选值为condition、userGroupId
-
-<li> **condition** </li>	Values = 查询条件，用户ID，用户名称，手机或邮箱
-<li> **userGroupId** </li>	Values = 用户组ID
+     * @var array 查询条件，根据propertycode和propertykey
      */
     public $Filters;
 
     /**
-     * @var boolean 返回信息是否为原文
+     * @var boolean 是否返回明文
      */
     public $Original;
 
     /**
      * @param string $UserStoreId 用户目录ID
      * @param Pageable $Pageable 分页数据
-     * @param array $Filters Key可选值为condition、userGroupId
-
-<li> **condition** </li>	Values = 查询条件，用户ID，用户名称，手机或邮箱
-<li> **userGroupId** </li>	Values = 用户组ID
-     * @param boolean $Original 返回信息是否为原文
+     * @param array $Filters 查询条件，根据propertycode和propertykey
+     * @param boolean $Original 是否返回明文
      */
     function __construct()
     {
@@ -94,7 +82,7 @@ class ListUserRequest extends AbstractModel
         if (array_key_exists("Filters",$param) and $param["Filters"] !== null) {
             $this->Filters = [];
             foreach ($param["Filters"] as $key => $value){
-                $obj = new Filter();
+                $obj = new QueryUserFilter();
                 $obj->deserialize($value);
                 array_push($this->Filters, $obj);
             }
